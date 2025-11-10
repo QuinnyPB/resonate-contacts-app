@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import "./App.css";
+import Contact from "./Contact";
 
 function App() {
+  const [contacts, setContacts] = useState([]);
+
+  useEffect(() => {
+    const apiFetch = async () => {
+      await axios
+        //
+        // .get(process.env.REACT_APP_BACKEND_URL);
+        .get("http://localhost:8000/")
+        .then((res) => setContacts(res.data))
+        .catch((err) => console.log(err));
+    };
+    apiFetch();
+    // console.log(contacts);
+  }, []);
+
+  contacts.forEach((contact) => {
+    console.log(contact);
+  });
+
+  var contactsList = contacts.map((obj) => <Contact data={obj} />);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="app-body">
+        <div className="header">
+          <h1 className="title">My Contacts</h1>
+          {/* <div className="add-btn">+</div> */}
+        </div>
+
+        <div className="contacts-body">
+          <div className="contacts-list">{contactsList}</div>
+        </div>
+      </div>
     </div>
   );
 }
