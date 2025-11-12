@@ -30,7 +30,6 @@ function App() {
       <div className="app-body">
         <div className="header">
           <h1 className="title">My Contacts</h1>
-          {/* <div className="add-btn">+</div> */}
         </div>
 
         <div className="contacts-body">

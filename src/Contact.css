@@ -13,6 +13,9 @@
   cursor: pointer;
   border: 1px solid gray;
 }
+.contact-body:focus {
+  border: 1px solid gray;
+}
 
 .contact-upper {
   display: flex;
@@ -56,19 +59,34 @@
   overflow: hidden;
   gap: 4px;
   opacity: 0;
-  max-height: 0;
-  transition: transform 1.5s ease-in;
   pointer-events: none;
+  max-height: 0;
+  /* transition: transform 1.5s ease-in; */
+  transition: max-height 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+  transform: translateY(-20px);
+  z-index: 2;
 }
 .additInfo-body.expanded {
   max-height: 200px;
   opacity: 1;
   pointer-events: pointer;
+  transform: translateY(0);
 }
 .additInfo-body > p {
-  font-size: 12px;
+  font-size: 16px;
 }
-
 .additInfo-body {
   font-size: 8px;
+}
+
+.additInfo-line {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 6px;
+  z-index: 1;
+}
+
+.additInfo-line > p {
+  font-size: 10px;
 }

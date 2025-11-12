@@ -1,4 +1,4 @@
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { Briefcase, ChevronDown, ChevronUp, Mail, MapPin } from "lucide-react";
 import "./Contact.css";
 import { useState } from "react";
 
@@ -27,15 +27,23 @@ function Contact({ data }) {
       <div className="contact-lower">
         <div className="additInfo">
           <div className={`additInfo-body ${isOpen ? "expanded" : ""}`}>
-            <p>
-              email: {data.email}
-              <br />
-              Address: {data.address.suite}, {data.address.street}{" "}
-              {data.address.city} {data.address.zipcode}
-              <br />
-              Company: {data.company.name}
-              <br />
-            </p>
+            <div>
+              <div className="additInfo-line">
+                <Mail width={16} height={16} />
+                <p>Email: {data.email}</p>
+              </div>
+              <div className="additInfo-line">
+                <MapPin width={16} height={16} />
+                <p>
+                  Address: {data.address.suite}, {data.address.street}{" "}
+                  {data.address.city} {data.address.zipcode}
+                </p>
+              </div>
+              <div className="additInfo-line">
+                <Briefcase width={16} height={16} />
+                <p>Company: {data.company.name}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
