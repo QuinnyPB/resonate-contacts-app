@@ -5,13 +5,14 @@ import Contact from "./Contact";
 
 function App() {
   const [contacts, setContacts] = useState([]);
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
   useEffect(() => {
     const apiFetch = async () => {
       await axios
         //
-        // .get(process.env.REACT_APP_BACKEND_URL);
-        .get("http://localhost:8000/")
+        .get(`${BACKEND_URL}`)
+        // .get("http://localhost:8000/")
         .then((res) => setContacts(res.data))
         .catch((err) => console.log(err));
     };
